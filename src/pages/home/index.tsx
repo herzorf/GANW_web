@@ -1,6 +1,15 @@
+import http from "../../http"
+
 const XXX = () => {
+    const xxx = function () {
+        http.get("/test", {
+            params: {
+                xxx: "xxxx"
+            }
+        }).then(res => console.log(res))
+    }
     return (
-        <h1>home</h1>
+        <button onClick={xxx}>http</button>
     )
 }
 
