@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styles from './index.module.css'
+import { Button } from 'antd'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -7,9 +8,10 @@ function App() {
   return (
     <div className={styles.app}>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <Button type="primary" onClick={() => setCount((count) => count + 1)}>
           {count}
-        </button>
+        </Button>
+
       </div>
 
     </div>
