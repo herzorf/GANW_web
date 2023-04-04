@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styles from './index.module.css'
+import styles from './index.module.scss'
 import { Button } from 'antd'
 const App: React.FC = () => {
   const [count, setCount] = useState(0)
