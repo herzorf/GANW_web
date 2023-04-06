@@ -28,7 +28,7 @@ const App: React.FC = () => {
           items={getMenu(navRoute)}
         />
       </Header>
-      <Content style={{ padding: '0 50px' }}>
+      <Content style={{ padding: '0 12px' }}>
         <div className={styles.siteLayoutContent} style={{ background: colorBgContainer, height: "100%" }}>
           <Outlet />
         </div>
