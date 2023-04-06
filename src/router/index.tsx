@@ -24,7 +24,7 @@ const navRoute = [
     {
         id: 2,
         path: "/search",
-        name: "查询"
+        name: "查询车辆信息"
     }
 ]
 
