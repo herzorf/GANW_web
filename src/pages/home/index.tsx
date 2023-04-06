@@ -1,16 +1,9 @@
-import http from "../../http"
+import { Button } from "antd"
 
-const XXX = () => {
-    const xxx = function () {
-        http.get("/test", {
-            params: {
-                xxx: "xxxx"
-            }
-        }).then(res => console.log(res))
-    }
+const Home = () => {
     return (
-        <button onClick={xxx}>http</button>
+        <Button >home</Button>
     )
 }
 
-export default XXX
+export default Home
