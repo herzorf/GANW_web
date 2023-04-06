@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './global.css'
 import 'antd/dist/reset.css';
-import router from './router';
+import { router } from './router';
 import {
   RouterProvider,
 } from "react-router-dom";

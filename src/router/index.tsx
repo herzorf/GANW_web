@@ -7,9 +7,22 @@ const router = createBrowserRouter([
         element: <App />
     },
     {
-        path: "/home",
+        path: "/search",
         element: <Home />
     },
 ]);
 
-export default router
+const navRoute = [
+    {
+        id: 1,
+        path: "/",
+        name: "首页"
+    },
+    {
+        id: 2,
+        path: "/search",
+        name: "查询"
+    }
+]
+
+export { router, navRoute } 
