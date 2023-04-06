@@ -4,12 +4,15 @@ import Home from "../pages/home";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <App />
+        element: <App />,
+        children: [
+            {
+                path: "/search",
+                element: <Home />
+            },
+        ]
     },
-    {
-        path: "/search",
-        element: <Home />
-    },
+
 ]);
 
 const navRoute = [
