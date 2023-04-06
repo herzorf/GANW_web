@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom'
 import styles from './index.module.scss'
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Layout, Menu, theme } from 'antd';
 import { Content, Footer, Header } from 'antd/es/layout/layout';
 import { navRoute } from '../router';
 const App: React.FC = () => {
@@ -10,11 +10,10 @@ const App: React.FC = () => {
 
   const getMenu = (route: typeof navRoute) => {
     return route.map(item => {
-      return (<Menu.Item>
-        <Link to={item.path}>
-          {item.name}
-        </Link>
-      </Menu.Item>)
+      return {
+        key: item.id,
+        label: <Link to={item.path}> {item.name}</Link>
+      }
     })
 
   }
@@ -25,17 +24,16 @@ const App: React.FC = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['2']}
-        >
-          {getMenu(navRoute)}
-        </Menu>
+          defaultSelectedKeys={['1']}
+          items={getMenu(navRoute)}
+        />
       </Header>
       <Content style={{ padding: '0 50px' }}>
         <div className={styles.siteLayoutContent} style={{ background: colorBgContainer, height: "100%" }}>
           <Outlet />
         </div>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>©2023 Created by Ant UED</Footer>
+      <Footer style={{ textAlign: 'center' }}>©2023  警用装备采购中心</Footer>
     </Layout>
   );
 };
