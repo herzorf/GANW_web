@@ -1,10 +1,27 @@
-import { Button, Col, Form, Input, Row, Space } from "antd"
+import { Col, Form, Input, Menu, MenuProps, Row, Space } from "antd"
+import styles from "./index.module.scss"
 const { Search } = Input;
 const SearchPage = () => {
     const [form] = Form.useForm();
     const onFinish = () => {
         console.log(form.getFieldsValue());
     };
+    const onClick: MenuProps['onClick'] = (e) => {
+        console.log('click', e);
+    };
+    const classItem = [
+        {
+            label: '警用通信装备',
+            key: '1',
+            children: [
+                {
+                    label: '指挥通信',
+                    key: '1-1',
+                },
+            ],
+        },
+    ];
+
     return (
         <div>
             <Row>
@@ -28,6 +45,11 @@ const SearchPage = () => {
                             />
                         </Form.Item>
                     </Form>
+                </Col>
+            </Row>
+            <Row>
+                <Col span={16} offset={4}>
+                    <Menu onClick={onClick} className={styles.menu} style={{ width: 256 }} mode="vertical" items={classItem} />
                 </Col>
             </Row>
 
