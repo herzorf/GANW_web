@@ -1,6 +1,8 @@
-import { Col, Form, Input, Menu, MenuProps, Row, Space } from "antd"
+import { Card, Col, Form, Input, Menu, MenuProps, Row, Space } from "antd"
 import styles from "./index.module.scss"
 import classItem from "./classItem";
+import Meta from "antd/es/card/Meta";
+import data from "./data";
 const { Search } = Input;
 const SearchPage = () => {
     const [form] = Form.useForm();
@@ -42,9 +44,27 @@ const SearchPage = () => {
                     <Menu onClick={onClick} className={styles.menu} style={{ width: 256 }} mode="vertical" items={classItem} />
                 </Col>
             </Row>
-            <Row>
+            <Row style={{ marginTop: "16px" }}>
                 <Col span={16} offset={4}>
+                    <Row gutter={16}>
+                        {data.map(item => {
+                            return (
+                                <Col span={6} key={item.productId} style={{ marginBottom: "24px" }}>
+                                    <Card
+                                        hoverable
+                                        style={{ width: 220 }}
+                                        cover={<img alt="example" src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i4/1037811875/O1CN01hfDzc01PinRRNxL3y_!!1037811875.jpg_460x460Q90.jpg_.webp" />}
+                                    >
+                                        <Meta
+                                            title={<p>{item.productName}</p>}
+                                            description={item.productType}
+                                        />
+                                    </Card>
+                                </Col>
+                            )
+                        })}
 
+                    </Row>
                 </Col>
             </Row>
 
