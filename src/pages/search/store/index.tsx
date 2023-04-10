@@ -9,7 +9,7 @@ export interface proInfo {
     secondSortName: string,
     proNum: string,
     shopName: string,
-    markPrice: string,
+    marketPrice: string,
     salesPrice: string
 }
 
@@ -25,7 +25,6 @@ const useSearchStore = create<SearchState>()(
         proInfo: [],
         fetch: async () => {
             await http("/system/productinfo/list", {}).then(res => {
-                console.log(res)
                 set({ proInfo: res.data.rows })
             })
         },

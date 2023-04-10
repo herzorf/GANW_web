@@ -38,7 +38,7 @@ const SearchPage = () => {
                             <Search
                                 placeholder="请输入查询的车辆信息"
                                 allowClear
-                                enterButton="Search"
+                                enterButton="搜索"
                                 size="large"
                                 onSearch={form.submit}
                             />
@@ -66,8 +66,15 @@ const SearchPage = () => {
                                         cover={<img alt="test" src={test} />}
                                     >
                                         <Meta
-                                            title={<p>{item.proName}</p>}
-                                            description={item.proType}
+                                            title={<span style={{ fontSize: "12px" }}>{item.proName}</span>}
+                                            description={<div>
+                                                <p>{item.shopName}</p>
+                                                <p>
+                                                    <s>{item.marketPrice}</s> &nbsp;
+                                                    <span>{item.salesPrice}</span>
+                                                </p>
+                                                <p>商品编号：{item.proId}</p>
+                                            </div>}
                                         />
                                     </Card>
                                 </Col>
