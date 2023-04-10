@@ -1,21 +1,31 @@
 import { create } from 'zustand'
 import http from '../../../http'
 
+export interface ProductInfo {
+    productId: string,
+    productName: string,
+    productType: string,
+    firstSortName: string,
+    secondSortName: string,
+    productNumber: string,
+    shopName: string,
+    markPrice: string,
+    salesPrice: string
+}
+
 interface SearchState {
-    bears: any
-    increase: (by: number) => void
+    productInfo: ProductInfo[]
     fetch: () => void
 }
 
 const useSearchStore = create<SearchState>()(
     (set) => ({
-        bears: [],
+        productInfo: [],
         fetch: async () => {
             await http("/search", {}).then(res => {
-                set({ bears: res.data })
+                set({ productInfo: res.data })
             })
         },
-        increase: (by) => set({ bears: by + 1 }),
     }),
 )
 

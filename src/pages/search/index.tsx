@@ -2,7 +2,7 @@ import { Card, Col, Form, Input, Menu, MenuProps, Row, Space } from "antd"
 import styles from "./index.module.scss"
 import classItem from "./classItem";
 import Meta from "antd/es/card/Meta";
-import useSearchStore from "./store";
+import useSearchStore, { ProductInfo } from "./store";
 import { useEffect } from "react";
 const { Search } = Input;
 const SearchPage = () => {
@@ -15,7 +15,7 @@ const SearchPage = () => {
         console.log('click', e);
     };
 
-    const bears = useSearchStore(state => state.bears)
+    const bears = useSearchStore(state => state.productInfo)
     const fetch = useSearchStore(state => state.fetch)
     useEffect(() => {
         fetch()
@@ -58,7 +58,7 @@ const SearchPage = () => {
             <Row style={{ marginTop: "16px" }}>
                 <Col span={16} offset={4}>
                     <Row gutter={16}>
-                        {bears.map((item: any) => {
+                        {bears.map((item: ProductInfo) => {
                             return (
                                 <Col span={6} key={item.productId} style={{ marginBottom: "24px" }}>
                                     <Card
