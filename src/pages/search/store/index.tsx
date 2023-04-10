@@ -24,9 +24,9 @@ const useSearchStore = create<SearchState>()(
     (set) => ({
         proInfo: [],
         fetch: async () => {
-            await http("/system/proinfo/list", {}).then(res => {
+            await http("/system/productinfo/list", {}).then(res => {
                 console.log(res)
-                set({ proInfo: res.data })
+                set({ proInfo: res.data.rows })
             })
         },
     }),
