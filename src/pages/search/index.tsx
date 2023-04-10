@@ -2,8 +2,9 @@ import { Card, Col, Form, Input, Menu, MenuProps, Row, Space } from "antd"
 import styles from "./index.module.scss"
 import classItem from "./classItem";
 import Meta from "antd/es/card/Meta";
-import useSearchStore, { ProductInfo } from "./store";
+import useSearchStore, { proInfo } from "./store";
 import { useEffect } from "react";
+import test from "../../assets/test.png"
 const { Search } = Input;
 const SearchPage = () => {
     const [form] = Form.useForm();
@@ -15,7 +16,7 @@ const SearchPage = () => {
         console.log('click', e);
     };
 
-    const bears = useSearchStore(state => state.productInfo)
+    const bears = useSearchStore(state => state.proInfo)
     const fetch = useSearchStore(state => state.fetch)
     useEffect(() => {
         fetch()
@@ -49,26 +50,24 @@ const SearchPage = () => {
                 <Col span={16} offset={4}>
                     <div className={styles.centerWrapper}>
                         <Menu onClick={onClick} className={styles.menu} style={{ width: 256 }} mode="vertical" items={classItem} />
-
-                        <img src="https://media.gq.com.tw/photos/63bfbbbc51f7b8fb22ba3ca3/16:9/w_1280,c_limit/model%20x.jpg" alt="" />
-
+                        <img src={test} alt="" />
                     </div>
                 </Col>
             </Row>
             <Row style={{ marginTop: "16px" }}>
                 <Col span={16} offset={4}>
                     <Row gutter={16}>
-                        {bears.map((item: ProductInfo) => {
+                        {bears?.length !== 0 && bears.map((item: proInfo) => {
                             return (
-                                <Col span={6} key={item.productId} style={{ marginBottom: "24px" }}>
+                                <Col span={6} key={item.proId} style={{ marginBottom: "24px" }}>
                                     <Card
                                         hoverable
                                         style={{ width: 220 }}
-                                        cover={<img alt="example" src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i4/1037811875/O1CN01hfDzc01PinRRNxL3y_!!1037811875.jpg_460x460Q90.jpg_.webp" />}
+                                        cover={<img alt="test" src={test} />}
                                     >
                                         <Meta
-                                            title={<p>{item.productName}</p>}
-                                            description={item.productType}
+                                            title={<p>{item.proName}</p>}
+                                            description={item.proType}
                                         />
                                     </Card>
                                 </Col>
