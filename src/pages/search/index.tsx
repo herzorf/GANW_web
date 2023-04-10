@@ -41,7 +41,12 @@ const SearchPage = () => {
             </Row>
             <Row>
                 <Col span={16} offset={4}>
-                    <Menu onClick={onClick} className={styles.menu} style={{ width: 256 }} mode="vertical" items={classItem} />
+                    <div className={styles.centerWrapper}>
+                        <Menu onClick={onClick} className={styles.menu} style={{ width: 256 }} mode="vertical" items={classItem} />
+
+                        <img src="https://media.gq.com.tw/photos/63bfbbbc51f7b8fb22ba3ca3/16:9/w_1280,c_limit/model%20x.jpg" alt="" />
+
+                    </div>
                 </Col>
             </Row>
             <Row style={{ marginTop: "16px" }}>
@@ -63,7 +68,6 @@ const SearchPage = () => {
                                 </Col>
                             )
                         })}
-
                     </Row>
                 </Col>
             </Row>
