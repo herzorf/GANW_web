@@ -17,14 +17,14 @@ export interface proInfo {
 
 interface SearchState {
     proInfo: proInfo[]
-    fetch: () => void
+    fetch: (params?: any) => void
 }
 
 const useSearchStore = create<SearchState>()(
     (set) => ({
         proInfo: [],
-        fetch: async () => {
-            await http("/system/productinfo/list", {}).then(res => {
+        fetch: async (params: any) => {
+            await http("/system/productinfo/list", { params }).then(res => {
                 set({ proInfo: res.data.rows })
             })
         },

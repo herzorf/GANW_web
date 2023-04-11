@@ -10,10 +10,12 @@ const SearchPage = () => {
     const [form] = Form.useForm();
 
     const onFinish = () => {
-        console.log(form.getFieldsValue());
+        const { productInfo } = form.getFieldsValue()
+        fetch({ proName: productInfo })
     };
     const onClick: MenuProps['onClick'] = (e) => {
-        console.log('click', e);
+        fetch({ secondSortName: e.key })
+
     };
 
     const bears = useSearchStore(state => state.proInfo)
@@ -32,7 +34,7 @@ const SearchPage = () => {
                         autoComplete="off"
                     >
                         <Form.Item
-                            name="info"
+                            name="productInfo"
                             rules={[{ required: true, message: "请输入要查询的车辆信息" }]}
                         >
                             <Search
