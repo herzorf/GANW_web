@@ -12,11 +12,12 @@ const App: React.FC = () => {
     return route.map(item => {
       return {
         key: item.id,
-        label: <Link to={item.path}> {item.name}</Link>
+        label: <Link to={item.path}> <span>{item.name}</span> </Link>
       }
     })
 
   }
+  // TODO
   return (
     <Layout className={styles.layout}>
       <Header>
