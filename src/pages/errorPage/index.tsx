@@ -1,6 +1,10 @@
+import { Empty } from "antd"
+
 const ErrorPage = () => {
     return (
-        <h1>error page</h1>
+        <div style={{ paddingTop: "20%" }}>
+            <Empty />
+        </div>
     )
 }
 
