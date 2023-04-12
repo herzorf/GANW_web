@@ -19,7 +19,7 @@ const router = createHashRouter([
                 element: <Search />
             },
             {
-                path: "/productInfo/:proNum",
+                path: "/productInfo/:proId",
                 element: <ProductInfo />
             }
         ]
@@ -37,7 +37,7 @@ const navRoute = [
     {
         id: 2,
         path: "/search",
-        name: "查询车辆信息"
+        name: "查询商品信息"
     }
 ]
 

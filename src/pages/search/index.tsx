@@ -11,6 +11,7 @@ import carouselImage3 from "../../assets/carousel/image3.jpeg"
 import carouselImage4 from "../../assets/carousel/image4.jpeg"
 import carouselImage5 from "../../assets/carousel/image5.jpeg"
 import carouselImage6 from "../../assets/carousel/image6.jpeg"
+import { Link } from "react-router-dom";
 const { Search } = Input;
 const SearchPage = () => {
     const [form] = Form.useForm();
@@ -77,25 +78,29 @@ const SearchPage = () => {
                     <Row gutter={16}>
                         {bears?.length !== 0 && bears.map((item: proInfo) => {
                             return (
-                                <Col span={6} key={item.proId} style={{ marginBottom: "24px" }}>
-                                    <Card
-                                        hoverable
-                                        style={{ width: 220 }}
-                                        cover={<img alt="test" src={test} />}
-                                    >
-                                        <Meta
-                                            title={<span style={{ fontSize: "12px" }}>{item.proName}</span>}
-                                            description={<div>
-                                                <p>{item.shopName}</p>
-                                                <p>
-                                                    <s>{item.marketPrice}</s> &nbsp;
-                                                    <span>{item.salesPrice}</span>
-                                                </p>
-                                                <p>商品编号：{item.proId}</p>
-                                            </div>}
-                                        />
-                                    </Card>
-                                </Col>
+
+                                <Link to={`/productInfo/${item.proId}`}>
+                                    <Col span={6} key={item.proId} style={{ marginBottom: "24px" }}>
+                                        <Card
+                                            hoverable
+                                            style={{ width: 220 }}
+                                            cover={<img alt="test" src={test} />}
+                                        >
+                                            <Meta
+                                                title={<span style={{ fontSize: "12px" }}>{item.proName}</span>}
+                                                description={<div>
+                                                    <p>{item.shopName}</p>
+                                                    <p>
+                                                        <s>{item.marketPrice}</s> &nbsp;
+                                                        <span>{item.salesPrice}</span>
+                                                    </p>
+                                                    <p>商品编号：{item.proId}</p>
+                                                </div>}
+                                            />
+                                        </Card>
+                                    </Col>
+                                </Link>
+
                             )
                         })}
                     </Row>
