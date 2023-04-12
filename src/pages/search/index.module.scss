@@ -2,8 +2,27 @@
     border: 1px solid  rgba(5, 5, 5, 0.06);;
 }
 .centerWrapper{
+    height: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel{
+    width: 80%;
     img{
-        width: 700px;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+:global{
+    .dot{
+       li{
+        background-color: black;
+       } 
+    }
+    .ant-carousel .slick-dots li.slick-active button{
+        background: rgb(202, 201, 201);
+
     }
 }
