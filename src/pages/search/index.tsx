@@ -59,7 +59,7 @@ const SearchPage = () => {
                     <div className={styles.centerWrapper}>
                         <Menu onClick={onClick} className={styles.menu} style={{ width: '20%' }} mode="vertical" items={classItem} />
                         <div className={styles.carousel}>
-                            <Carousel dots={{ className: "dot" }} >
+                            <Carousel autoplay dots={{ className: "dot" }} >
                                 <img src={carouselImage1} alt="" />
                                 <img src={carouselImage2} alt="" />
                                 <img src={carouselImage3} alt="" />
