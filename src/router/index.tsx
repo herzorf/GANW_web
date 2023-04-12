@@ -1,9 +1,16 @@
-import { createBrowserRouter, createHashRouter } from "react-router-dom";
-import App from "../app";
-import Home from "../pages/home";
-import Search from "../pages/search";
-import ProductInfo from "../pages/productInfo";
-import ErrorPage from "../pages/errorPage";
+import { createHashRouter } from "react-router-dom";
+import { LazyExoticComponent, Suspense, lazy } from "react";
+
+const App = lazy(() => import('../app'));
+const Home = lazy(() => import('../pages/home'));
+const Search = lazy(() => import('../pages/search'));
+const ProductInfo = lazy(() => import('../pages/productInfo'));
+const ErrorPage = lazy(() => import('../pages/errorPage'));
+const WithLoadingComponent = (Element: JSX.Element) => {
+    return <Suspense fallback={"加载中。。。"}>
+        {Element}
+    </Suspense>
+}
 const router = createHashRouter([
     {
         path: "/",
@@ -12,15 +19,15 @@ const router = createHashRouter([
         children: [
             {
                 path: "/",
-                element: <Home />
+                element: WithLoadingComponent(<Home />)
             },
             {
                 path: "/search",
-                element: <Search />
+                element: WithLoadingComponent(<Search />)
             },
             {
                 path: "/productInfo/:proId",
-                element: <ProductInfo />
+                element: WithLoadingComponent(<ProductInfo />)
             }
         ]
     },

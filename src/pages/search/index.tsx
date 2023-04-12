@@ -79,8 +79,8 @@ const SearchPage = () => {
                         {bears?.length !== 0 && bears.map((item: proInfo) => {
                             return (
 
-                                <Link to={`/productInfo/${item.proId}`}>
-                                    <Col span={6} key={item.proId} style={{ marginBottom: "24px" }}>
+                                <Link to={`/productInfo/${item.proId}`} key={item.proId}>
+                                    <Col span={6} style={{ marginBottom: "24px" }}>
                                         <Card
                                             hoverable
                                             style={{ width: 220 }}
