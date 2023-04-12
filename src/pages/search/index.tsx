@@ -104,12 +104,17 @@ const SearchPage = () => {
                             )
                         })}
                     </Row>
-                    <Pagination
-                        total={85}
-                        showSizeChanger
-                        showQuickJumper
-                        showTotal={(total) => `共 ${total} 件商品`}
-                    />
+                    <Row>
+                        <div className={styles.pagination}>
+                            <Pagination
+                                total={85}
+                                showSizeChanger
+                                showQuickJumper
+                                showTotal={(total) => `共 ${total} 件商品`}
+                            />
+                        </div>
+                    </Row>
+
                 </Col>
             </Row>
 
