@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom/client'
 import './global.css'
 import 'antd/dist/reset.css';
 import { router } from './router';
+import { ConfigProvider } from 'antd';
+import zhCN from "antd/es/locale/zh_CN"
 import {
-  HashRouter,
   RouterProvider,
 } from "react-router-dom";
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ConfigProvider locale={zhCN}>
+      <RouterProvider router={router} />
+    </ConfigProvider>
   </React.StrictMode>,
 )

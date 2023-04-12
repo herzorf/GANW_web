@@ -1,4 +1,4 @@
-import { Card, Carousel, Col, Form, Input, Menu, MenuProps, Row, Space } from "antd"
+import { Card, Carousel, Col, Form, Input, Menu, MenuProps, Pagination, Row, Space } from "antd"
 import styles from "./index.module.scss"
 import classItem from "./classItem";
 import Meta from "antd/es/card/Meta";
@@ -104,6 +104,12 @@ const SearchPage = () => {
                             )
                         })}
                     </Row>
+                    <Pagination
+                        total={85}
+                        showSizeChanger
+                        showQuickJumper
+                        showTotal={(total) => `共 ${total} 件商品`}
+                    />
                 </Col>
             </Row>
 
