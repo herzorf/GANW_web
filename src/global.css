@@ -8,4 +8,8 @@
   min-height: 100vh;
 }
 
-
+.overflowTest{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
