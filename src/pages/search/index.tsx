@@ -26,6 +26,7 @@ const SearchPage = () => {
     };
 
     const bears = useSearchStore(state => state.proInfo)
+    const total = useSearchStore(state => state.total)
     const fetch = useSearchStore(state => state.fetch)
     useEffect(() => {
         fetch()
@@ -107,7 +108,7 @@ const SearchPage = () => {
                     <Row>
                         <div className={styles.pagination}>
                             <Pagination
-                                total={85}
+                                total={total}
                                 showSizeChanger
                                 showQuickJumper
                                 showTotal={(total) => `共 ${total} 件商品`}
