@@ -3,6 +3,8 @@ import styles from "./index.module.scss"
 import { Image } from 'antd';
 import tesla from "../../assets/carousel/tesla.png"
 import Red from "../../components/Red";
+import { useMatches, useParams, } from "react-router-dom";
+import { useEffect, useLayoutEffect } from "react";
 const ProductInfo = () => {
 
     const items: TabsProps['items'] = [
@@ -23,8 +25,12 @@ const ProductInfo = () => {
         },
     ];
     const onChange = (key: string) => {
-        console.log(key);
+        // console.log(key);
     };
+    const { proId } = useParams()
+    useLayoutEffect(() => {
+        console.log(proId)
+    }, [])
     return (
         <div className={styles.wrapper}>
             <Space direction="vertical" size="large"  >
