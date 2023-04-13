@@ -29,11 +29,10 @@ interface SearchState {
     total: number
     data: proInfo[]
     fetch: (params?: any) => void
-    reflash: (store: SearchType) => void
 }
 const init = {
     pageNum: 1,
-    pageSize: 10,
+    pageSize: 12,
     shopName: "",
     proNum: "",
     secondSortName: "",
@@ -47,8 +46,6 @@ const useSearchStore = create<SearchState>()(
         },
         data: [],
         total: 0,
-        reflash: (store) => {
-        },
         fetch: async (params: any) => {
             await http("/system/productinfo/list", { params }).then(res => {
                 const { total, rows, pageNum, pageSize } = res.data

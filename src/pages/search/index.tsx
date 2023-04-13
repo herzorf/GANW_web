@@ -90,8 +90,8 @@ const SearchPage = () => {
                                         <Card
                                             hoverable
                                             style={{ width: 250 }}
-                                            // cover={<img alt="图片" src={`/src/assets/${item.logoImg}`} />}
-                                            cover={<img alt="图片" src={test} />}
+                                            cover={<img alt="图片" src={`/src/assets/${item.logoImg}`} />}
+                                        // cover={<img alt="图片" src={test} />}
                                         >
                                             <Meta
                                                 title={<span style={{ fontSize: "12px" }}>{item.proName}</span>}
@@ -118,6 +118,8 @@ const SearchPage = () => {
                                 showSizeChanger
                                 showQuickJumper
                                 defaultCurrent={1}
+                                pageSize={searchInfo.pageSize}
+                                current={searchInfo.pageNum}
                                 onChange={(page, pageSize) => changePage(page, pageSize)}
                                 showTotal={(total) => `共 ${total} 条结果`}
                             />
