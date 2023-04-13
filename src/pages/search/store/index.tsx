@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create, useStore } from 'zustand'
 import http from '../../../http'
 
 export interface proInfo {
@@ -11,28 +11,52 @@ export interface proInfo {
     shopName: string,
     marketPrice: string,
     salesPrice: string
+    logoImg: string
 }
 
 
-
-interface SearchState {
-    proInfo: proInfo[]
-    pageNum: number
+interface SearchType {
+    pageNum?: number
+    shopName?: string
+    proNum?: string
+    secondSortName?: string
+    proType?: string
+    proName: string
     pageSize: number
-    total: number
-    fetch: (params?: any) => void
 }
-
+interface SearchState {
+    searchInfo: SearchType
+    total: number
+    data: proInfo[]
+    fetch: (params?: any) => void
+    reflash: (store: SearchType) => void
+}
+const init = {
+    pageNum: 1,
+    pageSize: 10,
+    shopName: "",
+    proNum: "",
+    secondSortName: "",
+    proType: "",
+    proName: "",
+}
 const useSearchStore = create<SearchState>()(
     (set) => ({
+        searchInfo: {
+            ...init,
+        },
+        data: [],
         total: 0,
-        pageNum: 1,
-        pageSize: 10,
-        proInfo: [],
+        reflash: (store) => {
+        },
         fetch: async (params: any) => {
             await http("/system/productinfo/list", { params }).then(res => {
-                const { total, rows } = res.data
-                set({ proInfo: rows, total })
+                const { total, rows, pageNum, pageSize } = res.data
+                set((state) => ({
+                    data: rows,
+                    total,
+                    searchInfo: { ...params, pageNum, pageSize }
+                }))
             })
         },
     }),

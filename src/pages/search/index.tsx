@@ -3,7 +3,7 @@ import styles from "./index.module.scss"
 import classItem from "./classItem";
 import Meta from "antd/es/card/Meta";
 import useSearchStore, { proInfo } from "./store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import test from "../../assets/test.png"
 import carouselImage1 from "../../assets/carousel/image1.jpeg"
 import carouselImage2 from "../../assets/carousel/image2.jpeg"
@@ -15,22 +15,28 @@ import { Link } from "react-router-dom";
 const { Search } = Input;
 const SearchPage = () => {
     const [form] = Form.useForm();
-
+    const [selectkey, setSelectkey] = useState<string[]>([])
     const onFinish = () => {
         const { productInfo } = form.getFieldsValue()
-        fetch({ proName: productInfo })
+        fetch({ ...searchInfo, proName: productInfo, })
     };
     const onClick: MenuProps['onClick'] = (e) => {
-        fetch({ secondSortName: e.key })
-
+        console.log(e.key, selectkey[0], e.key === selectkey[0])
+        e.key === selectkey[0] ? setSelectkey([]) : setSelectkey([e.key])
+        fetch({ ...searchInfo, secondSortName: e.key === selectkey[0] ? "" : e.key, })
     };
 
-    const bears = useSearchStore(state => state.proInfo)
+    const bears = useSearchStore(state => state.data)
     const total = useSearchStore(state => state.total)
+    const searchInfo = useSearchStore(state => state.searchInfo)
     const fetch = useSearchStore(state => state.fetch)
     useEffect(() => {
-        fetch()
+        fetch(searchInfo)
     }, [])
+
+    const changePage = (page: number, pageSize: number) => {
+        fetch({ ...searchInfo, pageNum: page, pageSize })
+    }
     return (
         <div>
             <Row>
@@ -59,7 +65,7 @@ const SearchPage = () => {
             <Row>
                 <Col span={20} offset={2}>
                     <div className={styles.centerWrapper}>
-                        <Menu onClick={onClick} className={styles.menu} style={{ width: '20%' }} mode="vertical" items={classItem} />
+                        <Menu onClick={onClick} selectedKeys={selectkey} className={styles.menu} style={{ width: '20%' }} mode="vertical" items={classItem} />
                         <div className={styles.carousel}>
                             <Carousel autoplay dots={{ className: "dot" }} >
                                 <img src={carouselImage1} alt="" />
@@ -79,13 +85,13 @@ const SearchPage = () => {
                     <Row gutter={16}>
                         {bears?.length !== 0 && bears.map((item: proInfo) => {
                             return (
-
-                                <Link to={`/productInfo/${item.proId}`} key={item.proId}>
-                                    <Col span={6} style={{ marginBottom: "24px" }}>
+                                <Col span={6} style={{ marginBottom: "24px" }} key={item.proId}>
+                                    <Link to={`/productInfo/${item.proId}`}>
                                         <Card
                                             hoverable
-                                            style={{ width: 220 }}
-                                            cover={<img alt="test" src={test} />}
+                                            style={{ width: 250 }}
+                                            // cover={<img alt="图片" src={`/src/assets/${item.logoImg}`} />}
+                                            cover={<img alt="图片" src={test} />}
                                         >
                                             <Meta
                                                 title={<span style={{ fontSize: "12px" }}>{item.proName}</span>}
@@ -99,8 +105,8 @@ const SearchPage = () => {
                                                 </div>}
                                             />
                                         </Card>
-                                    </Col>
-                                </Link>
+                                    </Link>
+                                </Col>
 
                             )
                         })}
@@ -111,15 +117,17 @@ const SearchPage = () => {
                                 total={total}
                                 showSizeChanger
                                 showQuickJumper
-                                showTotal={(total) => `共 ${total} 件商品`}
+                                defaultCurrent={1}
+                                onChange={(page, pageSize) => changePage(page, pageSize)}
+                                showTotal={(total) => `共 ${total} 条结果`}
                             />
                         </div>
                     </Row>
 
                 </Col>
-            </Row>
+            </Row >
 
-        </div>
+        </div >
     )
 }
 
