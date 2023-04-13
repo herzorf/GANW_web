@@ -3,30 +3,31 @@ import styles from "./index.module.scss"
 import { Image } from 'antd';
 import tesla from "../../assets/carousel/tesla.png"
 import Red from "../../components/Red";
-import { useMatches, useParams, } from "react-router-dom";
-import { useEffect, useLayoutEffect } from "react";
+import { useParams, } from "react-router-dom";
+import { useLayoutEffect } from "react";
+import ProductIntroduce from "./components/productIntroduce";
+import PackagingAndSpecification from "./components/PackagingAndSpecification";
+import Serve from "./components/serve";
 const ProductInfo = () => {
 
     const items: TabsProps['items'] = [
         {
             key: '1',
             label: `商品介绍`,
-            children: `Content of Tab Pane 1`,
+            children: <ProductIntroduce />,
         },
         {
             key: '2',
             label: `包装与规格`,
-            children: `Content of Tab Pane 2`,
+            children: <PackagingAndSpecification />,
         },
         {
             key: '3',
             label: `服务保障`,
-            children: `Content of Tab Pane 3`,
+            children: <Serve />,
         },
     ];
-    const onChange = (key: string) => {
-        // console.log(key);
-    };
+
     const { proId } = useParams()
     useLayoutEffect(() => {
         console.log(proId)
@@ -58,7 +59,7 @@ const ProductInfo = () => {
                 </Row>
                 <Row>
                     <Col span={22} offset={2}>
-                        <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+                        <Tabs defaultActiveKey="1" items={items} />
                     </Col>
                 </Row>
             </Space>
