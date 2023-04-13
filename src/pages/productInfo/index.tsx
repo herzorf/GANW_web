@@ -4,10 +4,11 @@ import { Image } from 'antd';
 import tesla from "../../assets/carousel/tesla.png"
 import Red from "../../components/Red";
 import { useParams, } from "react-router-dom";
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import ProductIntroduce from "./components/productIntroduce";
 import PackagingAndSpecification from "./components/PackagingAndSpecification";
 import Serve from "./components/serve";
+import http from "../../http";
 const ProductInfo = () => {
 
     const items: TabsProps['items'] = [
@@ -27,8 +28,10 @@ const ProductInfo = () => {
             children: <Serve />,
         },
     ];
-
     const { proId } = useParams()
+    // useEffect(() => {
+    //     http("/system/staff/list", { params: {} })
+    // }, [])
     useLayoutEffect(() => {
         console.log(proId)
     }, [])
