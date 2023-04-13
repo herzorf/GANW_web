@@ -3,7 +3,6 @@ import styles from './index.module.scss'
 import { Layout, Menu, theme } from 'antd';
 import { Content, Footer, Header } from 'antd/es/layout/layout';
 import { navRoute } from '../router';
-import logo from "../assets/logo.png"
 const App: React.FC = () => {
   const {
     token: { colorBgContainer },
