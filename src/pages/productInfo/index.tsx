@@ -2,6 +2,7 @@ import { Badge, Card, Col, Descriptions, Row, Space, Tabs, TabsProps } from "ant
 import styles from "./index.module.scss"
 import { Image } from 'antd';
 import tesla from "../../assets/carousel/tesla.png"
+import Red from "../../components/Red";
 const ProductInfo = () => {
 
     const items: TabsProps['items'] = [
@@ -38,7 +39,7 @@ const ProductInfo = () => {
                         <Descriptions size="small" column={1} labelStyle={{ fontSize: "18px", width: "100px", textAlign: "right", display: "inline-block" }} contentStyle={{ fontSize: "18px" }} title={<h2>郑州日产汽车 纳瓦拉 四驱 汽油自动 ZN1035UCK6C 尊贵型</h2>} >
                             <Descriptions.Item label="商品报价">150000</Descriptions.Item>
                             <Descriptions.Item label="市场价格">120000</Descriptions.Item>
-                            <Descriptions.Item label="折扣率">12%</Descriptions.Item>
+                            <Descriptions.Item label="折扣率"> <Red>12%</Red></Descriptions.Item>
                             <Descriptions.Item label="库存"> 50 </Descriptions.Item>
                         </Descriptions>
                     </Col>
