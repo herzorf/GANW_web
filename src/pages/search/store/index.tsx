@@ -1,6 +1,5 @@
 import { create, useStore } from 'zustand'
 import http from '../../../http'
-import { useEffect } from 'react'
 
 export interface proInfo {
     proId: string,

@@ -4,37 +4,43 @@ import { Image } from 'antd';
 import tesla from "../../assets/carousel/tesla.png"
 import Red from "../../components/Red";
 import { useParams, } from "react-router-dom";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import ProductIntroduce from "./components/productIntroduce";
 import PackagingAndSpecification from "./components/PackagingAndSpecification";
 import Serve from "./components/serve";
 import http from "../../http";
 const ProductInfo = () => {
 
+    const { proId } = useParams()
+    const [productInfo, setProductInfo] = useState<any>({})
+    const [staffInfo, setStaffInfo] = useState<any>({})
     const items: TabsProps['items'] = [
         {
             key: '1',
             label: `商品介绍`,
-            children: <ProductIntroduce />,
+            children: <ProductIntroduce functionDesc={productInfo.functionDesc} />,
         },
-        {
-            key: '2',
-            label: `包装与规格`,
-            children: <PackagingAndSpecification />,
-        },
-        {
-            key: '3',
-            label: `服务保障`,
-            children: <Serve />,
-        },
+        // {
+        //     key: '2',
+        //     label: `包装与规格`,
+        //     children: <PackagingAndSpecification />,
+        // },
+        // {
+        //     key: '3',
+        //     label: `服务保障`,
+        //     children: <Serve />,
+        // },
     ];
-    const { proId } = useParams()
-    // useEffect(() => {
-    //     http("/system/staff/list", { params: {} })
-    // }, [])
+
     useLayoutEffect(() => {
-        console.log(proId)
-    }, [])
+        http("/system/productinfo/list", { params: { proId: proId } }).then((res) => {
+            const { shopName } = res.data.rows[0]
+            http("/system/staff/list", { params: { distributorName: shopName } }).then((res) => {
+                setStaffInfo(res.data.rows[0])
+            })
+            setProductInfo(res.data.rows[0])
+        })
+    }, [proId])
     return (
         <div className={styles.wrapper}>
             <Space direction="vertical" size="large"  >
@@ -42,21 +48,26 @@ const ProductInfo = () => {
                     <Col span={5} offset={2}>
                         <Image
                             width={300}
-                            src={tesla}
+                            src={`/src/assets/${productInfo.logoImg}`}
                         />
                     </Col>
                     <Col flex={0} span={10}>
-                        <Descriptions size="small" column={1} labelStyle={{ fontSize: "18px", width: "100px", textAlign: "right", display: "inline-block" }} contentStyle={{ fontSize: "18px" }} title={<h2 className='overflowTest' style={{ maxWidth: "700px" }}>郑州日产汽车 纳瓦拉 四驱 汽油自动 ZN1035UCK6C 尊贵型</h2>} >
-                            <Descriptions.Item label="商品报价">150000</Descriptions.Item>
-                            <Descriptions.Item label="市场价格">120000</Descriptions.Item>
-                            <Descriptions.Item label="折扣率"> <Red>12%</Red></Descriptions.Item>
-                            <Descriptions.Item label="库存"> 50 </Descriptions.Item>
+                        <Descriptions size="small" column={1} labelStyle={{ fontSize: "18px", width: "100px", textAlign: "right", display: "inline-block" }}
+                            contentStyle={{ fontSize: "18px" }}
+                            title={<h2 className='overflowTest'
+                                style={{ maxWidth: "700px" }}>
+                                {productInfo.proName}
+                            </h2>} >
+                            <Descriptions.Item label="商品报价">{productInfo.marketPrice}</Descriptions.Item>
+                            <Descriptions.Item label="市场价格">{productInfo.salesPrice}</Descriptions.Item>
+                            <Descriptions.Item label="折扣率"> <Red>{productInfo.discountRate}%</Red></Descriptions.Item>
+                            <Descriptions.Item label="库存"> {productInfo.storeNumber} </Descriptions.Item>
                         </Descriptions>
                     </Col>
                     <Col span={6}>
-                        <Card title="郑州日产汽车销售有限公司" bordered={false} style={{ width: 300 }}>
-                            <p> 联系人姓名：<span>景向阳</span> </p>
-                            <p> 联系电话：<span>15837116369</span> </p>
+                        <Card title={staffInfo.distributorName} bordered={false} style={{ width: 300 }}>
+                            <p> 联系人姓名：<span>{staffInfo.staffName}</span> </p>
+                            <p> 联系电话：<span>{staffInfo.phone}</span> </p>
                         </Card>
                     </Col>
                 </Row>

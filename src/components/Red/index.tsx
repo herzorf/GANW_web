@@ -1,6 +1,6 @@
 import styles from "./index.module.scss"
 interface PropsType {
-    children: string
+    children: any
 }
 
 const Red = (props: PropsType) => {
