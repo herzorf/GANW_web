@@ -1,5 +1,6 @@
 import { create, useStore } from 'zustand'
 import http from '../../../http'
+import { useEffect } from 'react'
 
 export interface proInfo {
     proId: string,
@@ -28,6 +29,7 @@ interface SearchState {
     searchInfo: SearchType
     total: number
     data: proInfo[]
+    initSearchInfo: () => void
     fetch: (params?: any) => void
 }
 const init = {
@@ -44,6 +46,9 @@ const useSearchStore = create<SearchState>()(
         searchInfo: {
             ...init,
         },
+        initSearchInfo: () => {
+            set({ searchInfo: init })
+        },
         data: [],
         total: 0,
         fetch: async (params: any) => {
@@ -58,5 +63,4 @@ const useSearchStore = create<SearchState>()(
         },
     }),
 )
-
-export default useSearchStore
+export { useSearchStore, init }

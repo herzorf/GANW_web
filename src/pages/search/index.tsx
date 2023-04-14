@@ -2,7 +2,7 @@ import { Card, Carousel, Col, Form, Input, Menu, MenuProps, Pagination, Row, Spa
 import styles from "./index.module.scss"
 import classItem from "./classItem";
 import Meta from "antd/es/card/Meta";
-import useSearchStore, { proInfo } from "./store";
+import { useSearchStore } from "./store";
 import { useEffect, useState } from "react";
 import test from "../../assets/test.png"
 import carouselImage1 from "../../assets/carousel/image1.jpeg"
@@ -12,6 +12,7 @@ import carouselImage4 from "../../assets/carousel/image4.jpeg"
 import carouselImage5 from "../../assets/carousel/image5.jpeg"
 import carouselImage6 from "../../assets/carousel/image6.jpeg"
 import { Link } from "react-router-dom";
+import { proInfo } from "./store";
 const { Search } = Input;
 const SearchPage = () => {
     const [form] = Form.useForm();
@@ -27,13 +28,18 @@ const SearchPage = () => {
     };
 
     const bears = useSearchStore(state => state.data)
+    const initSearchInfo = useSearchStore(state => state.initSearchInfo)
     const total = useSearchStore(state => state.total)
     const searchInfo = useSearchStore(state => state.searchInfo)
     const fetch = useSearchStore(state => state.fetch)
     useEffect(() => {
         fetch(searchInfo)
     }, [])
-
+    useEffect(() => {
+        return () => {
+            initSearchInfo()
+        }
+    }, [])
     const changePage = (page: number, pageSize: number) => {
         fetch({ ...searchInfo, pageNum: page, pageSize })
     }
