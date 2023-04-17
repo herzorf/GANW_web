@@ -27,12 +27,12 @@ const ProductInfo = () => {
             children: <ProductParameter content="xxxx" />,
         },
         // {
-        //     key: '2',
+        //     key: '3',
         //     label: `包装与规格`,
         //     children: <PackagingAndSpecification />,
         // },
         // {
-        //     key: '3',
+        //     key: '4',
         //     label: `服务保障`,
         //     children: <Serve />,
         // },

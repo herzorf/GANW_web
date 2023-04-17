@@ -6,6 +6,8 @@ const ProductParameter = ({ content }: PropsType) => {
     return (
         <div>
             {content}
+
+
         </div>
     )
 }
