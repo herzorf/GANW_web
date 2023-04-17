@@ -1,5 +1,5 @@
 import { createHashRouter } from "react-router-dom";
-import { LazyExoticComponent, Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 
 const App = lazy(() => import('../app'));
 const Home = lazy(() => import('../pages/home'));
@@ -21,10 +21,10 @@ const router = createHashRouter([
                 path: "/",
                 element: WithLoadingComponent(<Home />)
             },
-            {
-                path: "/search",
-                element: WithLoadingComponent(<Search />)
-            },
+            // {
+            //     path: "/search",
+            //     element: WithLoadingComponent(<Search />)
+            // },
             {
                 path: "/productInfo/:proId",
                 element: WithLoadingComponent(<ProductInfo />)
@@ -42,11 +42,11 @@ const navRoute = [
         path: "/",
         name: "首页"
     },
-    {
-        id: 2,
-        path: "/search",
-        name: "查询商品信息"
-    }
+    // {
+    //     id: 2,
+    //     path: "/search",
+    //     name: "查询商品信息"
+    // }
 ]
 
 export { router, navRoute } 

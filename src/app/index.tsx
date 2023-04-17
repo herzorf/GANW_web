@@ -21,14 +21,16 @@ const App: React.FC = () => {
   return (
     <Layout className={styles.layout}>
       <Header>
-        <div className={styles.logo} >
-        </div>
-        <Menu
+        <Link to="/">
+          <div className={styles.logo} >
+          </div>
+        </Link>
+        {/* <Menu
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['1']}
           items={getMenu(navRoute)}
-        />
+        /> */}
       </Header>
       <Content style={{ padding: '0 12px', height: "100%" }}>
         <div className={styles.siteLayoutContent} style={{ background: colorBgContainer }}>
