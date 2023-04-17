@@ -9,6 +9,7 @@ import ProductIntroduce from "./components/productIntroduce";
 import PackagingAndSpecification from "./components/PackagingAndSpecification";
 import Serve from "./components/serve";
 import http from "../../http";
+import ProductParameter from "./components/productParameter";
 const ProductInfo = () => {
 
     const { proId } = useParams()
@@ -19,6 +20,11 @@ const ProductInfo = () => {
             key: '1',
             label: `商品介绍`,
             children: <ProductIntroduce functionDesc={productInfo.functionDesc} />,
+        },
+        {
+            key: '2',
+            label: `商品参数`,
+            children: <ProductParameter content="xxxx" />,
         },
         // {
         //     key: '2',
