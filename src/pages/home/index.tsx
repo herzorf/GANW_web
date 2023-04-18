@@ -25,8 +25,8 @@ const Home = () => {
                                         <Card
                                             hoverable
                                             style={{ width: 250 }}
-                                            // cover={<img alt="图片" src={`/src/assets/${item.logoImg}`} />}
-                                            cover={<img alt="图片" src={test} />}
+                                            cover={<img alt="图片" src={item.logoImg} />}
+                                        // cover={<img alt="图片" src={test} />}
                                         >
                                             <Meta
                                                 title={<span style={{ fontSize: "12px" }}>{item.proName}</span>}
