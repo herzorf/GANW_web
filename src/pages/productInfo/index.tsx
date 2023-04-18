@@ -15,6 +15,7 @@ const ProductInfo = () => {
     const { proId } = useParams()
     const [productInfo, setProductInfo] = useState<any>({})
     const [staffInfo, setStaffInfo] = useState<any>({})
+    const [productParameter, setProductParameter] = useState<any>({})
     const items: TabsProps['items'] = [
         {
             key: '1',
@@ -24,7 +25,7 @@ const ProductInfo = () => {
         {
             key: '2',
             label: `商品参数`,
-            children: <ProductParameter content="xxxx" />,
+            children: <ProductParameter productInfoParameter={productParameter} />,
         },
         // {
         //     key: '3',
@@ -46,6 +47,10 @@ const ProductInfo = () => {
             })
             setProductInfo(res.data.rows[0])
         })
+        http(`/system/carinfo/${proId}`).then((res) => {
+            setProductParameter(res.data.data)
+        })
+
     }, [proId])
     return (
         <div className={styles.wrapper}>
@@ -54,7 +59,7 @@ const ProductInfo = () => {
                     <Col span={5} offset={2}>
                         <Image
                             width={300}
-                            src={`/src/assets/${productInfo.logoImg}`}
+                            src={productInfo.logoImg}
                         />
                     </Col>
                     <Col flex={0} span={10}>

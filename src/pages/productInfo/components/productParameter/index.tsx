@@ -1,15 +1,23 @@
 import { Descriptions } from "antd"
 import styles from "./index.module.scss"
+import { inforMap } from "../../inforMap"
 interface PropsType {
-    content?: string
+    productInfoParameter: any
 }
 
-const ProductParameter = ({ content }: PropsType) => {
+const ProductParameter = ({ productInfoParameter }: PropsType) => {
     return (
         <div className={styles.wrapper}>
             <Descriptions column={1} bordered>
-                <Descriptions.Item label="Product">Cloud Database</Descriptions.Item>
-
+                {productInfoParameter && Object.keys(productInfoParameter).map((key, index) => {
+                    const itemName = inforMap[key as keyof typeof inforMap]
+                    if (productInfoParameter[key] !== null && itemName !== undefined) {
+                        return (
+                            <Descriptions.Item key={key} label={itemName}>{productInfoParameter[key]}</Descriptions.Item>
+                        )
+                    }
+                })
+                }
             </Descriptions>
         </div>
     )

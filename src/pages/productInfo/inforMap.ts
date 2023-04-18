@@ -1,6 +1,4 @@
 export const inforMap = {
-    id: "主键",
-    proId: "产品ID",
     proName: "产品名称",
     proShop: "厂商",
     proLeval: "产品级别",
