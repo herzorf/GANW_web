@@ -25,7 +25,7 @@ const Home = () => {
                                         <Card
                                             hoverable
                                             style={{ width: 250 }}
-                                            cover={<img alt="图片" src={item.logoImg} />}
+                                            cover={<img style={{ maxHeight: "230px" }} alt="图片" src={item.logoImg} />}
                                         // cover={<img alt="图片" src={test} />}
                                         >
                                             <Meta
