@@ -20,13 +20,13 @@ const Home = () => {
                     <Row gutter={16}>
                         {bears?.length !== 0 && bears.map((item: proInfo) => {
                             return (
-                                <Col span={6} style={{ marginBottom: "24px" }} key={item.proId}>
-                                    <Link to={`/productInfo/${item.proId}`}>
+                                <Col span={6} style={{ marginBottom: "24px" }} key={item.proId} >
+                                    <Link to={`/productInfo/${item.proId}`} style={{ display: 'inline-block' }} >
+
                                         <Card
                                             hoverable
                                             style={{ width: 250 }}
                                             cover={<img style={{ maxHeight: "230px" }} alt="图片" src={item.logoImg} />}
-                                        // cover={<img alt="图片" src={test} />}
                                         >
                                             <Meta
                                                 title={<span style={{ fontSize: "12px" }}>{item.proName}</span>}
@@ -41,7 +41,9 @@ const Home = () => {
                                             />
                                         </Card>
                                     </Link>
+
                                 </Col>
+
                             )
                         })}
                     </Row>

@@ -19,14 +19,15 @@ const ProductInfo = () => {
     const items: TabsProps['items'] = [
         {
             key: '1',
-            label: `商品介绍`,
-            children: <ProductIntroduce functionDesc={productInfo.functionDesc} />,
-        },
-        {
-            key: '2',
             label: `商品参数`,
             children: <ProductParameter productInfoParameter={productParameter} />,
         },
+        {
+            key: '2',
+            label: `商品介绍`,
+            children: <ProductIntroduce functionDesc={productInfo.functionDesc} />,
+        },
+
         // {
         //     key: '3',
         //     label: `包装与规格`,
@@ -72,7 +73,7 @@ const ProductInfo = () => {
                             <Descriptions.Item label="商品报价">{productInfo.marketPrice}</Descriptions.Item>
                             <Descriptions.Item label="市场价格">{productInfo.salesPrice}</Descriptions.Item>
                             <Descriptions.Item label="折扣率"> <Red>{productInfo.discountRate}%</Red></Descriptions.Item>
-                            <Descriptions.Item label="库存"> {productInfo.storeNumber} </Descriptions.Item>
+                            {/* <Descriptions.Item label="库存"> {productInfo.storeNumber} </Descriptions.Item> */}
                         </Descriptions>
                     </Col>
                     <Col span={6}>
