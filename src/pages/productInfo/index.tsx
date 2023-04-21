@@ -6,8 +6,6 @@ import Red from "../../components/Red";
 import { useParams, } from "react-router-dom";
 import { useEffect, useLayoutEffect, useState } from "react";
 import ProductIntroduce from "./components/productIntroduce";
-import PackagingAndSpecification from "./components/PackagingAndSpecification";
-import Serve from "./components/serve";
 import http from "../../http";
 import ProductParameter from "./components/productParameter";
 const ProductInfo = () => {
@@ -60,7 +58,7 @@ const ProductInfo = () => {
                     <Col span={5} offset={2}>
                         <Image
                             width={300}
-                            src={productInfo.logoImg}
+                            src={`../${productInfo.logoImg}`}
                         />
                     </Col>
                     <Col flex={0} span={10}>
