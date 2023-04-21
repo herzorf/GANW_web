@@ -1,4 +1,4 @@
-import { createHashRouter } from "react-router-dom";
+import { createHashRouter, createBrowserRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 const App = lazy(() => import('../app'));
