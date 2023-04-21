@@ -22,33 +22,31 @@ const ProductParameter = ({ productInfoParameter }: PropsType) => {
                 }
             </Descriptions> */}
             <Row>
+                <Anchor
+                    style={{ border: "1px solid red" }}
+                    items={[
+                        {
+                            key: 'part-1',
+                            href: '#part-1',
+                            title: 'part1'
+                        },
+                        {
+                            key: 'part-2',
+                            href: '#part-2',
+                            title: 'part2'
+                        },
+                        {
+                            key: 'part-3',
+                            href: '#part-3',
+                            title: 'part3',
+                        },
+                    ]}
+                />
 
-                <Col span={8}>
-                    <Anchor
-
-                        items={[
-                            {
-                                key: 'part-1',
-                                href: `#${pathname}part-1`,
-                                title: 'Part 1',
-                            },
-                            {
-                                key: 'part-2',
-                                href: `#${pathname}part-2`,
-                                title: 'Part 2',
-                            },
-                            {
-                                key: 'part-3',
-                                href: `#${pathname}part-3`,
-                                title: 'Part 3',
-                            },
-                        ]}
-                    />
-                </Col>
                 <Col span={16}>
-                    <div id={`#${pathname}part-1`} style={{ height: '100vh', background: 'rgba(255,0,0,0.02)' }} />
-                    <div id={`#${pathname}part-2`} style={{ height: '100vh', background: 'rgba(0,255,0,0.02)' }} />
-                    <div id={`#${pathname}part-3`} style={{ height: '100vh', background: 'rgba(0,0,255,0.02)' }} />
+                    <div id="part-1" style={{ minHeight: '100vh', background: 'rgba(255,0,0,0.02)' }} />
+                    <div id="part-2" style={{ minHeight: '100vh', background: 'rgba(0,255,0,0.02)' }} />
+                    <div id="part-3" style={{ minHeight: '100vh', background: 'rgba(0,0,255,0.02)' }} />
                 </Col>
             </Row>
         </div>
