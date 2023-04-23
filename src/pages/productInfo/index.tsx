@@ -1,7 +1,6 @@
 import { Badge, Card, Col, Descriptions, Row, Space, Tabs, TabsProps } from "antd"
 import styles from "./index.module.scss"
 import { Image } from 'antd';
-import tesla from "../../assets/carousel/tesla.png"
 import Red from "../../components/Red";
 import { useParams, } from "react-router-dom";
 import { useEffect, useLayoutEffect, useState } from "react";
@@ -13,29 +12,17 @@ const ProductInfo = () => {
     const { proId } = useParams()
     const [productInfo, setProductInfo] = useState<any>({})
     const [staffInfo, setStaffInfo] = useState<any>({})
-    const [productParameter, setProductParameter] = useState<any>({})
     const items: TabsProps['items'] = [
         {
             key: '1',
             label: `商品参数`,
-            children: <ProductParameter productInfoParameter={productParameter} />,
+            children: <ProductParameter proId={proId} />,
         },
         {
             key: '2',
             label: `商品介绍`,
             children: <ProductIntroduce functionDesc={productInfo.functionDesc} />,
         },
-
-        // {
-        //     key: '3',
-        //     label: `包装与规格`,
-        //     children: <PackagingAndSpecification />,
-        // },
-        // {
-        //     key: '4',
-        //     label: `服务保障`,
-        //     children: <Serve />,
-        // },
     ];
 
     useLayoutEffect(() => {
@@ -46,9 +33,7 @@ const ProductInfo = () => {
             })
             setProductInfo(res.data.rows[0])
         })
-        http(`/system/carinfo/${proId}`).then((res) => {
-            setProductParameter(res.data.data)
-        })
+
 
     }, [proId])
     return (
@@ -57,7 +42,7 @@ const ProductInfo = () => {
                 <Row>
                     <Col span={5} offset={2}>
                         <Image
-                            width={300}
+                            width={250}
                             src={`../${productInfo.logoImg}`}
                         />
                     </Col>
@@ -71,7 +56,6 @@ const ProductInfo = () => {
                             <Descriptions.Item label="商品报价">{productInfo.marketPrice}</Descriptions.Item>
                             <Descriptions.Item label="市场价格">{productInfo.salesPrice}</Descriptions.Item>
                             <Descriptions.Item label="折扣率"> <Red>{productInfo.discountRate}%</Red></Descriptions.Item>
-                            {/* <Descriptions.Item label="库存"> {productInfo.storeNumber} </Descriptions.Item> */}
                         </Descriptions>
                     </Col>
                     <Col span={6}>
@@ -88,8 +72,6 @@ const ProductInfo = () => {
                 </Row>
             </Space>
         </div>
-
-
     )
 }
 

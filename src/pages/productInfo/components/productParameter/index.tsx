@@ -1,54 +1,71 @@
 import { Anchor, Col, Descriptions, Row } from "antd"
 import styles from "./index.module.scss"
 import { inforMap } from "../../inforMap"
-import { useLocation, useRoutes } from "react-router-dom"
+import http from "@/http"
+import { useLayoutEffect, useState } from "react"
 interface PropsType {
-    productInfoParameter: any
+    proId: any
 }
 
-const ProductParameter = ({ productInfoParameter }: PropsType) => {
-    const { pathname } = useLocation()
+const ProductParameter = ({ proId }: PropsType) => {
+    const randerInfo = (value: string): string => {
+        value = value.toString()
+        value = value.replace(/#0#/g, "标配")
+        value = value.replace(/#1#/g, "选配")
+        value = value.replace(/#2#/g, "无")
+        return value
+    }
+    const [baseInfo, setBaseInfo] = useState<any>({})
+    const [engineInfo, setEngineInfo] = useState<any>({})
+    const [carBody, setCarBody] = useState<any>({})
+    useLayoutEffect(() => {
+        http(`/system/carinfo/${proId}`).then((res) => {
+            setBaseInfo(res.data.data)
+        })
+        http(`/system/engineInfo/${proId}`).then((res) => {
+            setEngineInfo(res.data.data)
+        })
+        http(`/system/carbody/${proId}`).then((res) => {
+            setCarBody(res.data.data)
+        })
+    }, [proId])
     return (
         <div className={styles.wrapper}>
-            {/* <Descriptions column={1} bordered>
-                {productInfoParameter && Object.keys(productInfoParameter).map((key, index) => {
+
+            <Descriptions column={1} bordered title="车辆基本信息">
+                {baseInfo && Object.keys(baseInfo).map((key, index) => {
                     const itemName = inforMap[key as keyof typeof inforMap]
-                    if (productInfoParameter[key] !== null && itemName !== undefined) {
+                    if (baseInfo[key] !== null && itemName !== undefined) {
                         return (
-                            <Descriptions.Item key={key} label={itemName}>{productInfoParameter[key]}</Descriptions.Item>
+                            <Descriptions.Item key={key} label={itemName}>{randerInfo(baseInfo[key])}</Descriptions.Item>
                         )
                     }
                 })
                 }
-            </Descriptions> */}
-            <Row>
-                <Anchor
-                    style={{ border: "1px solid red" }}
-                    items={[
-                        {
-                            key: 'part-1',
-                            href: '#part-1',
-                            title: 'part1'
-                        },
-                        {
-                            key: 'part-2',
-                            href: '#part-2',
-                            title: 'part2'
-                        },
-                        {
-                            key: 'part-3',
-                            href: '#part-3',
-                            title: 'part3',
-                        },
-                    ]}
-                />
+            </Descriptions>
+            <Descriptions column={1} bordered title="发动机">
+                {engineInfo && Object.keys(engineInfo).map((key, index) => {
+                    const itemName = inforMap[key as keyof typeof inforMap]
+                    if (engineInfo[key] !== null && itemName !== undefined) {
+                        return (
+                            <Descriptions.Item key={key} label={itemName}>{randerInfo(engineInfo[key])}</Descriptions.Item>
+                        )
+                    }
+                })
+                }
+            </Descriptions>
+            <Descriptions column={1} bordered title="车身">
+                {carBody && Object.keys(carBody).map((key, index) => {
+                    const itemName = inforMap[key as keyof typeof inforMap]
+                    if (carBody[key] !== null && itemName !== undefined) {
+                        return (
+                            <Descriptions.Item key={key} label={itemName}>{randerInfo(carBody[key])}</Descriptions.Item>
+                        )
+                    }
+                })
+                }
+            </Descriptions>
 
-                <Col span={16}>
-                    <div id="part-1" style={{ minHeight: '100vh', background: 'rgba(255,0,0,0.02)' }} />
-                    <div id="part-2" style={{ minHeight: '100vh', background: 'rgba(0,255,0,0.02)' }} />
-                    <div id="part-3" style={{ minHeight: '100vh', background: 'rgba(0,0,255,0.02)' }} />
-                </Col>
-            </Row>
         </div>
     )
 }
