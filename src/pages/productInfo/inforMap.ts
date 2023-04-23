@@ -88,13 +88,37 @@ export const inforMap = {
     drivingMethod: "驱动方式",
     fourWheeldriveform: "四驱形式",
     centerDifferentialstructure: "中央差速器结构",
+
+    // 车轮制动
     frontSuspensiontype: "前悬架类型",
     backSuspensiontype: "后悬架类型",
     typeOfassistance: "助力类型",
     vehicleBodystructure: "车体结构",
+    frontBraketype: "前制动器类型",
+    backBraketype: "后制动器类型",
+    parkingBraketype: "驻车制动类型",
+    frontTirespecifications: "前轮胎规格",
+    backTirespecifications: "后轮胎规格",
+    spareTirespecifications: "备胎规格",
+
+    // 内部配置
+    steeringWheelmaterial: "方向盘材质",
+    wheelPositionadjustment: "方向盘位置调节",
+    multifunctionSteeringwheel: "多功能方向盘",
+    steeringWheelshifting: "方向盘换挡",
+    steeringHot: "方向盘加热",
+    steeringMemory: "方向盘记忆",
+    computerDisplayscreen: "行车电脑显示屏",
+    instrumentPanel: "仪表盘亮度调节",
+    instrumentSize: "仪表盘尺寸",
+    digitalDisplay: "全液晶仪表盘",
+    dashCam: "行车记录仪",
+    activeNoisereduction: "主动降噪",
+    mobileChargingfunction: "手机无线充电功能",
 }
 
 
 const xxx = {
+
 
 }
