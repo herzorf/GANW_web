@@ -49,7 +49,6 @@ export const inforMap = {
     environmentalStandards: "环保标准",
     numGears: "变速箱挡位个数",
     typeGear: "变速箱类型",
-    drivingMethod: "驱动方式",
     beTiresize: "前轮胎规格",
     aftTiresize: "后轮胎规格",
     displacement: "排量（L）",
@@ -84,6 +83,18 @@ export const inforMap = {
     beCapacity: "前电机容量(kWh)",
     fuelTankcapacity: "油箱容积(L)",
     cargoVolume: "行李箱容积(L)",
+    numberOftransmissiongears: "挡位个数",
+    type: "变速箱类型",
+    drivingMethod: "驱动方式",
+    fourWheeldriveform: "四驱形式",
+    centerDifferentialstructure: "中央差速器结构",
+    frontSuspensiontype: "前悬架类型",
+    backSuspensiontype: "后悬架类型",
+    typeOfassistance: "助力类型",
+    vehicleBodystructure: "车体结构",
 }
 
 
+const xxx = {
+
+}
