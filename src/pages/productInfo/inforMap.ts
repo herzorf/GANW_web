@@ -155,20 +155,23 @@ export const inforMap = {
     powerSupply: "220V/230V电源",
     bagPower: "行李厢12V电源接口",
     speakerBrandname: "扬声器品牌名称",
-    speakerNum: "扬声器数量"
+    speakerNum: "扬声器数量",
+
+    // 空调冰箱
+    temperatureControlmethod: "空调温度控制方式",
+    airConditioning: "后排独立空调",
+    airOutlet: "后座出风口",
+    zoneControl: "温度分区控制",
+    carAirpurifier: "车载空气净化器",
+    insideVehicle: "车车内PM2.5过滤装置",
+    negativeGenerator: "负离子发生器",
+    interiorFragrance: "车内香氛装置",
+    carRefrigerator: "车载冰箱",
+    numUltrasonicradars: "超声波泊车雷达数量",
+    numCameras: "倒车视频影像",
 }
 
 
 const xxx = {
-    temperatureControlmethod: "string",
-    airConditioning: "string",
-    airOutlet: "string",
-    zoneControl: "string",
-    carAirpurifier: "string",
-    insideVehicle: "string",
-    negativeGenerator: "string",
-    interiorFragrance: "string",
-    carRefrigerator: "string",
-    numUltrasonicradars: null,
-    numCameras: null
+
 }
