@@ -10,9 +10,9 @@ interface PropsType {
 const ProductParameter = ({ proId }: PropsType) => {
     const randerInfo = (value: string): string => {
         value = value.toString()
-        value = value.replace(/#0#/g, "标配")
-        value = value.replace(/#1#/g, "选配")
-        value = value.replace(/#2#/g, "无")
+        value = value.replace(/#0#/g, "无")
+        value = value.replace(/#1#/g, "标配")
+        value = value.replace(/#2#/g, "选配")
         return value
     }
     const [baseInfo, setBaseInfo] = useState<any>({})
@@ -22,6 +22,7 @@ const ProductParameter = ({ proId }: PropsType) => {
     const [wheelBraking, setWheelBraking] = useState<any>({})
     const [accessories, setAccessories] = useState<any>({})
     const [lightConfig, setLightConfig] = useState<any>({})
+    const [mediaConfig, setMediaConfig] = useState<any>({})
     useLayoutEffect(() => {
         // 获取基本信息
         http(`/system/carinfo/${proId}`).then((res) => {
@@ -51,6 +52,10 @@ const ProductParameter = ({ proId }: PropsType) => {
         http(`/system/lightConfig/${proId}`).then((res) => {
             setLightConfig(res.data.data)
         })
+        // 获取多媒体配置信息
+        http(`/system/mediaConfig/${proId}`).then((res) => {
+            setMediaConfig(res.data.data)
+        })
     }, [proId])
     const map = {
         "车辆基本信息": baseInfo,
@@ -60,6 +65,7 @@ const ProductParameter = ({ proId }: PropsType) => {
         "车轮制动": wheelBraking,
         "内部配置": accessories,
         "灯光配置": lightConfig,
+        "多媒体配置": mediaConfig
     }
     return (
         <div className={styles.wrapper}>

@@ -131,10 +131,44 @@ export const inforMap = {
     headlampCleaningdevice: "大灯清洗装置",
     delayedHeadlights: "延时关闭大灯",
     touchReadinglight: "触摸式阅读灯",
-    ambientLighting: "车内环境氛围灯"
+    ambientLighting: "车内环境氛围灯",
+
+    // 多媒体配置
+    controlColorscreen: "中控彩色液晶屏幕",
+    controlColorscreensize: "中控彩色液晶屏幕尺寸",
+    intelligentSystem: "车载智能系统",
+    navigationSystem: "GPS导航系统",
+    informationDisplay: "导航路况信息显示",
+    roadRescuecall: "道路救援呼叫",
+    bluetoothPhone: "蓝牙/车载电话",
+    mobileMapping: "手机互联/映射",
+    speechControlsystem: "语音识别控制系统",
+    gesture: "手势控制",
+    facialRecognition: "面部识别",
+    internetVehicles: "车载互联网",
+    otaUpgrade: "OTA升级",
+    rearScreen: "后排液晶屏",
+    rearControlmultimedia: "后排控制多媒体",
+    chargingInterface: "多媒体/充电接口",
+    numInterfaces: "USB/Type-C接口数量",
+    carDvd: "车载CD/DVD",
+    powerSupply: "220V/230V电源",
+    bagPower: "行李厢12V电源接口",
+    speakerBrandname: "扬声器品牌名称",
+    speakerNum: "扬声器数量"
 }
 
 
 const xxx = {
-
+    temperatureControlmethod: "string",
+    airConditioning: "string",
+    airOutlet: "string",
+    zoneControl: "string",
+    carAirpurifier: "string",
+    insideVehicle: "string",
+    negativeGenerator: "string",
+    interiorFragrance: "string",
+    carRefrigerator: "string",
+    numUltrasonicradars: null,
+    numCameras: null
 }
