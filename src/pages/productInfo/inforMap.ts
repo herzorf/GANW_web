@@ -16,16 +16,16 @@ export const inforMap = {
     acceleration: "官方0-100km/h加速",
     fuelConsumption: "电能当量燃料消耗值",
     vehicleWarranty: "车辆质保",
-    length: "长度",
-    width: "宽度",
-    heigth: "高度",
-    wheelbase: "轴距",
-    frontTrackwidth: "前轮距",
-    rearTrackwidth: "后轮距",
-    groundclearanceMin: "满载最小离地间隙",
-    approachAngle: "接近角",
-    departureAngle: "离去角",
-    maxGradeability: "最大爬坡度",
+    length: "长度（mm）",
+    width: "宽度（mm）",
+    heigth: "高度（mm）",
+    wheelbase: "轴距（mm）",
+    frontTrackwidth: "前轮距（mm）",
+    rearTrackwidth: "后轮距（mm）",
+    groundclearanceMin: "满载最小离地间隙（mm）",
+    approachAngle: "接近角（度）",
+    departureAngle: "离去角（度）",
+    maxGradeability: "最大爬坡度（度）",
     maxClimbingangle: "最大爬坡角",
     minTurningradius: "最小转弯半径",
     bodyStructure: "车身结构",
@@ -115,10 +115,26 @@ export const inforMap = {
     dashCam: "行车记录仪",
     activeNoisereduction: "主动降噪",
     mobileChargingfunction: "手机无线充电功能",
+
+    // 灯光配置
+    lightSource: "近光灯光源",
+    farLightsource: "远光灯光源",
+    lightingFeatures: "灯光特色功能",
+    daytimeRunninglights: "LED日间行车灯",
+    adaptiveHighlowbeams: "自适应远近光",
+    automaticHeadlights: "自动头灯",
+    corneringLamp: "转向辅助灯",
+    turnSignalheadlights: "转向头灯",
+    frontFoglights: "前雾灯",
+    headlightrainFogmode: "大灯雨雾模式",
+    heightAdustable: "大灯高度可调",
+    headlampCleaningdevice: "大灯清洗装置",
+    delayedHeadlights: "延时关闭大灯",
+    touchReadinglight: "触摸式阅读灯",
+    ambientLighting: "车内环境氛围灯"
 }
 
 
 const xxx = {
-
 
 }
