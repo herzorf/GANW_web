@@ -18,54 +18,70 @@ const ProductParameter = ({ proId }: PropsType) => {
     const [baseInfo, setBaseInfo] = useState<any>({})
     const [engineInfo, setEngineInfo] = useState<any>({})
     const [carBody, setCarBody] = useState<any>({})
+    const [chassisSteering, setChassisSteering] = useState<any>({})
+    const [wheelBraking, setWheelBraking] = useState<any>({})
+    const [accessories, setAccessories] = useState<any>({})
+    const [lightConfig, setLightConfig] = useState<any>({})
     useLayoutEffect(() => {
+        // 获取基本信息
         http(`/system/carinfo/${proId}`).then((res) => {
             setBaseInfo(res.data.data)
         })
+        // 获取发动机信息
         http(`/system/engineInfo/${proId}`).then((res) => {
             setEngineInfo(res.data.data)
         })
+        // 获取车身信息
         http(`/system/carbody/${proId}`).then((res) => {
             setCarBody(res.data.data)
         })
+        // 获取变速箱和底盘信息
+        http(`/system/chassissteerIng/${proId}`).then((res) => {
+            setChassisSteering(res.data.data)
+        })
+        // 获取车轮制动信息
+        http(`/system/wheelbrakingInfo/${proId}`).then((res) => {
+            setWheelBraking(res.data.data)
+        })
+        // 获取内部配置信息
+        http(`/system/accessories/${proId}`).then((res) => {
+            setAccessories(res.data.data)
+        })
+        // 获取灯光配置信息
+        http(`/system/lightConfig/${proId}`).then((res) => {
+            setLightConfig(res.data.data)
+        })
     }, [proId])
+    const map = {
+        "车辆基本信息": baseInfo,
+        "发动机": engineInfo,
+        "车身": carBody,
+        "变速箱和底盘": chassisSteering,
+        "车轮制动": wheelBraking,
+        "内部配置": accessories,
+        "灯光配置": lightConfig,
+    }
     return (
         <div className={styles.wrapper}>
-
-            <Descriptions column={1} bordered title="车辆基本信息">
-                {baseInfo && Object.keys(baseInfo).map((key, index) => {
-                    const itemName = inforMap[key as keyof typeof inforMap]
-                    if (baseInfo[key] !== null && itemName !== undefined) {
-                        return (
-                            <Descriptions.Item key={key} label={itemName}>{randerInfo(baseInfo[key])}</Descriptions.Item>
-                        )
-                    }
-                })
+            {Object.keys(map).map((key, index) => {
+                const item = map[key as keyof typeof map]
+                if (item) {
+                    return (
+                        <Descriptions column={1} bordered title={key}>
+                            {Object.keys(item).map((key, index) => {
+                                const itemName = inforMap[key as keyof typeof inforMap]
+                                if (item[key] !== null && itemName !== undefined) {
+                                    return (
+                                        <Descriptions.Item key={key} label={itemName}>{randerInfo(item[key])}</Descriptions.Item>
+                                    )
+                                }
+                            })
+                            }
+                        </Descriptions>
+                    )
                 }
-            </Descriptions>
-            <Descriptions column={1} bordered title="发动机">
-                {engineInfo && Object.keys(engineInfo).map((key, index) => {
-                    const itemName = inforMap[key as keyof typeof inforMap]
-                    if (engineInfo[key] !== null && itemName !== undefined) {
-                        return (
-                            <Descriptions.Item key={key} label={itemName}>{randerInfo(engineInfo[key])}</Descriptions.Item>
-                        )
-                    }
-                })
-                }
-            </Descriptions>
-            <Descriptions column={1} bordered title="车身">
-                {carBody && Object.keys(carBody).map((key, index) => {
-                    const itemName = inforMap[key as keyof typeof inforMap]
-                    if (carBody[key] !== null && itemName !== undefined) {
-                        return (
-                            <Descriptions.Item key={key} label={itemName}>{randerInfo(carBody[key])}</Descriptions.Item>
-                        )
-                    }
-                })
-                }
-            </Descriptions>
-
+            })
+            }
         </div>
     )
 }
