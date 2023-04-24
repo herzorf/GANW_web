@@ -117,7 +117,7 @@ const ProductParameter = ({ proId }: PropsType) => {
                         <Descriptions column={1} bordered title={key}>
                             {Object.keys(item).map((key, index) => {
                                 const itemName = inforMap[key as keyof typeof inforMap]
-                                if (item[key] !== null && itemName !== undefined) {
+                                if (item[key] !== null && itemName !== undefined && item[key].length > 0) {
                                     return (
                                         <Descriptions.Item key={key} label={itemName}>{randerInfo(item[key])}</Descriptions.Item>
                                     )
