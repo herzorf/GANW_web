@@ -169,9 +169,32 @@ export const inforMap = {
     carRefrigerator: "车载冰箱",
     numUltrasonicradars: "超声波泊车雷达数量",
     numCameras: "倒车视频影像",
+
+    // 主被动安全装备
+    passengerSeatairbags: "主/副驾驶座安全气囊",
+    frontRearsideairbags: "前/后排侧气囊",
+    headAircurtains: "前/后排头部气囊(气帘)",
+    kneeAirbag: "膝部气囊",
+    passivePedestrianprotection: "被动式行人保护系统",
+    tirePressuremonitoringfunction: "胎压监测装置",
+    continueDrivingzerotirepressure: "零胎压继续行驶",
+    seatbeltNotfastenedreminder: "安全带未系提示",
+    childSeatinterface: "儿童座椅接口",
+    antiLocksystem: "防抱死制动系统(ABS)",
+    brakeForcedistribution: "刹车力分配(EBD/CBC等)",
+    brakeAssist: "制动辅助(EBA/BAS/BA等)",
+    tractionControl: "牵引力控制(ASR/TCS/TRC等)",
+    bodyStabilitycontrol: "车身稳定控制(ESC/ESP/DSC等)",
+    parallelAssistance: "并线辅助",
+    laneDeparturewarningsystem: "车道偏离预警系统",
+    carLinesys: "车道保持辅助系统",
+    roadTrafficsignrecognition: '道路交通标识识别系统',
+    activeSafetysystem: "主动刹车/主动安全系统",
+    fatigueDrivingtips: "疲劳驾驶提示",
 }
 
 
 const xxx = {
+
 
 }

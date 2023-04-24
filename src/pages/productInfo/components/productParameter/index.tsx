@@ -24,6 +24,7 @@ const ProductParameter = ({ proId }: PropsType) => {
     const [lightConfig, setLightConfig] = useState<any>({})
     const [mediaConfig, setMediaConfig] = useState<any>({})
     const [refrigeratorConfig, setRefrigeratorConfig] = useState<any>({})
+    const [safeequipmentInfo, setSafeequipmentInfo] = useState<any>({})
     useLayoutEffect(() => {
         // 获取基本信息
         http(`/system/carinfo/${proId}`).then((res) => {
@@ -62,6 +63,10 @@ const ProductParameter = ({ proId }: PropsType) => {
         http(`/system/refrigeratorConfig/${proId}`).then((res) => {
             setRefrigeratorConfig(res.data.data)
         })
+
+        http(`/system/safeequipmentInfo/${proId}`).then((res) => {
+            setSafeequipmentInfo(res.data.data)
+        })
     }, [proId])
     const map = {
         "车辆基本信息": baseInfo,
@@ -73,6 +78,7 @@ const ProductParameter = ({ proId }: PropsType) => {
         "灯光配置": lightConfig,
         "多媒体配置": mediaConfig,
         "空调冰箱配置": refrigeratorConfig,
+        "主被动安全装备": safeequipmentInfo
     }
     return (
         <div className={styles.wrapper}>
