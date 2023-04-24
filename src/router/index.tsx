@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, createHashRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 const App = lazy(() => import('../app'));
@@ -11,7 +11,7 @@ const WithLoadingComponent = (Element: JSX.Element) => {
         {Element}
     </Suspense>
 }
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: "/",
         element: <App />,
