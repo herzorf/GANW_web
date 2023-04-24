@@ -8,17 +8,12 @@
   </head>
   <body>
     <script>
-      var Sys = {};
-      var ua = navigator.userAgent.toLowerCase();
-      console.log(window.ActiveXObject);
-      if (window.ActiveXObject) {
-        Sys.ie = ua.match(/msie ([\d.]+)/)[1];
-
-        if (Sys.ie <= 7) {
-          alert("你目前的IE版本为" + Sys.ie + "版本太低，请升级！");
-          location.href =
-            "http://windows.microsoft.com/zh-CN/internet-explorer/downloads/ie";
-        }
+      // 判断是否是IE浏览器，如果是IE浏览器就提示用chrome浏览器打开
+      if (
+        navigator.userAgent.indexOf("MSIE") > 0 ||
+        navigator.userAgent.indexOf("Trident") > 0
+      ) {
+        alert("该网站不支持IE浏览器，请使用Chrome或者火狐浏览器打开该网页！");
       }
     </script>
     <div id="root"></div>
