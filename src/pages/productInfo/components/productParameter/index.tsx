@@ -25,6 +25,10 @@ const ProductParameter = ({ proId }: PropsType) => {
     const [mediaConfig, setMediaConfig] = useState<any>({})
     const [refrigeratorConfig, setRefrigeratorConfig] = useState<any>({})
     const [safeequipmentInfo, setSafeequipmentInfo] = useState<any>({})
+    const [seatInfo, setSeatInfo] = useState<any>({})
+    const [windowConfig, setWindowConfig] = useState<any>({})
+    const [theftConfiguration, setTheftConfiguration] = useState<any>({})
+    const [handlingConfiguration, setHandlingConfiguration] = useState<any>({})
     useLayoutEffect(() => {
         // 获取基本信息
         http(`/system/carinfo/${proId}`).then((res) => {
@@ -64,8 +68,28 @@ const ProductParameter = ({ proId }: PropsType) => {
             setRefrigeratorConfig(res.data.data)
         })
 
+        // 获取主被动安全装备信息
         http(`/system/safeequipmentInfo/${proId}`).then((res) => {
             setSafeequipmentInfo(res.data.data)
+        })
+
+        // 获取座椅信息
+        http(`/system/seatInfo/${proId}`).then((res) => {
+            setSeatInfo(res.data.data)
+        })
+
+        // 获取玻璃后视镜信息
+        http(`/system/windowConfig/${proId}`).then((res) => {
+            setWindowConfig(res.data.data)
+        })
+
+        // 获取外部防盗配置信息
+        http(`/system/theftConfiguration/${proId}`).then((res) => {
+            setTheftConfiguration(res.data.data)
+        })
+
+        http(`/system/handlingConfiguration/${proId}`).then((res) => {
+            setHandlingConfiguration(res.data.data)
         })
     }, [proId])
     const map = {
@@ -78,7 +102,11 @@ const ProductParameter = ({ proId }: PropsType) => {
         "灯光配置": lightConfig,
         "多媒体配置": mediaConfig,
         "空调冰箱配置": refrigeratorConfig,
-        "主被动安全装备": safeequipmentInfo
+        "主被动安全装备": safeequipmentInfo,
+        "座椅信息": seatInfo,
+        "玻璃后视镜": windowConfig,
+        "外部防盗配置": theftConfiguration,
+        "操控配置": handlingConfiguration
     }
     return (
         <div className={styles.wrapper}>
