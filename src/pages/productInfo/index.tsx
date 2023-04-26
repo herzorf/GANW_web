@@ -43,7 +43,7 @@ const ProductInfo = () => {
                     <Col span={5} offset={2}>
                         <Image
                             width={250}
-                            src={`../${productInfo.logoImg}`}
+                            src={productInfo.logoImg}
                         />
                     </Col>
                     <Col flex={0} span={10}>
