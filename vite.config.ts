@@ -7,7 +7,8 @@ export default defineConfig({
   plugins: [
     react(),
     legacy({
-      targets: ['defaults', 'IE 11'],
+      targets: ['IE 8'],
+      additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
     }),
   ],
   css: {
@@ -24,7 +25,7 @@ export default defineConfig({
     }
   },
   build: {
-    target: 'es2015',
+    cssTarget: "chrome58"
   },
   base: "/GANW/dist/"
 })
