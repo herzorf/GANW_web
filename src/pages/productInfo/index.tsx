@@ -45,7 +45,7 @@ const ProductInfo = () => {
                         src={productInfo.logoImg}
                     />
                 </Col>
-                <Col span={10}>
+                <Col span={15}>
                     <Descriptions size="small" column={1} labelStyle={{ fontSize: "18px", width: "100px", textAlign: "right", display: "inline-block" }}
                         contentStyle={{ fontSize: "18px" }}
                         title={<h2 className='overflowTest'
@@ -57,12 +57,12 @@ const ProductInfo = () => {
                         <Descriptions.Item label="折扣率"> <Red>{productInfo.discountRate}%</Red></Descriptions.Item>
                     </Descriptions>
                 </Col>
-                <Col span={6}>
+                {/* <Col span={6}>
                     <Card title={staffInfo.distributorName} bordered={false} style={{ width: 300 }}>
                         <p> 联系人姓名：<span>{staffInfo.staffName}</span> </p>
                         <p> 联系电话：<span>{staffInfo.phone}</span> </p>
                     </Card>
-                </Col>
+                </Col> */}
             </Row>
             <Row>
                 <Col span={22} offset={2}>
