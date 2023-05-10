@@ -114,7 +114,7 @@ const ProductParameter = ({ proId }: PropsType) => {
                 const item = map[key as keyof typeof map]
                 if (item) {
                     return (
-                        <Descriptions column={1} bordered title={key}>
+                        <Descriptions size="small" column={1} bordered title={key}>
                             {Object.keys(item).map((key, index) => {
                                 const itemName = inforMap[key as keyof typeof inforMap]
                                 if (item[key] !== null && itemName !== undefined && item[key].length > 0) {
