@@ -4,13 +4,6 @@ import classItem from "./classItem";
 import Meta from "antd/es/card/Meta";
 import { useSearchStore } from "./store";
 import { useEffect, useState } from "react";
-import test from "../../assets/test.png"
-import carouselImage1 from "../../assets/carousel/image1.jpeg"
-import carouselImage2 from "../../assets/carousel/image2.jpeg"
-import carouselImage3 from "../../assets/carousel/image3.jpeg"
-import carouselImage4 from "../../assets/carousel/image4.jpeg"
-import carouselImage5 from "../../assets/carousel/image5.jpeg"
-import carouselImage6 from "../../assets/carousel/image6.jpeg"
 import { Link } from "react-router-dom";
 import { proInfo } from "./store";
 const { Search } = Input;
@@ -74,12 +67,7 @@ const SearchPage = () => {
                         <Menu onClick={onClick} selectedKeys={selectkey} className={styles.menu} style={{ width: '20%' }} mode="vertical" items={classItem} />
                         <div className={styles.carousel}>
                             <Carousel autoplay dots={{ className: "dot" }} >
-                                <img src={carouselImage1} alt="" />
-                                <img src={carouselImage2} alt="" />
-                                <img src={carouselImage3} alt="" />
-                                <img src={carouselImage4} alt="" />
-                                <img src={carouselImage5} alt="" />
-                                <img src={carouselImage6} alt="" />
+
                             </Carousel>
                         </div>
 
