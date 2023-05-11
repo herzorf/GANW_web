@@ -4,7 +4,7 @@ import { Image } from 'antd';
 import Red from "../../components/Red";
 import { useParams, } from "react-router-dom";
 import { useEffect, useLayoutEffect, useState } from "react";
-import ProductIntroduce from "./components/productIntroduce";
+import ProductIntroduce from "./components/productImage";
 import http from "../../http";
 import ProductParameter from "./components/productParameter";
 const ProductInfo = () => {
