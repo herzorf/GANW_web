@@ -16,13 +16,13 @@ const ProductInfo = () => {
         {
             key: '1',
             label: `商品参数`,
-            children: <ProductParameter proId={proId} />,
+            children: <ProductParameter proId={proId as string} />,
         },
-        // {
-        //     key: '2',
-        //     label: `商品介绍`,
-        //     children: <ProductIntroduce functionDesc={productInfo.functionDesc} />,
-        // },
+        {
+            key: '2',
+            label: `商品图片`,
+            children: <ProductIntroduce proId={proId as string} />,
+        },
     ];
 
     useLayoutEffect(() => {

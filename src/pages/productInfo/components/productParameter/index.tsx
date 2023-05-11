@@ -4,7 +4,7 @@ import { inforMap } from "../../inforMap"
 import http from "@/http"
 import { useLayoutEffect, useState } from "react"
 interface PropsType {
-    proId: any
+    proId: string
 }
 
 const ProductParameter = ({ proId }: PropsType) => {

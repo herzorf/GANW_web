@@ -1,22 +1,25 @@
 import { Descriptions } from "antd"
-
+import { Image } from 'antd';
+import styles from "./index.module.scss"
 interface PropsType {
-    functionDesc: string
+    proId: string
 }
 
-const ProductIntroduce = ({ functionDesc }: PropsType) => {
+const ProductIntroduce = ({ proId }: PropsType) => {
     return (
-        <div dangerouslySetInnerHTML={{ __html: functionDesc }}>
-            {/* <Descriptions>
-                <Descriptions.Item label="商品名称">北京现代 库斯途 7座 380T GDi 8AT LUX</Descriptions.Item>
-                <Descriptions.Item label="上架时间">2022-07-28 11:09:25</Descriptions.Item>
-                <Descriptions.Item label="商品重量">1754.0 Kg</Descriptions.Item>
-                <Descriptions.Item label="品牌">库斯途 7座</Descriptions.Item>
-                <Descriptions.Item label="发货周期">90天</Descriptions.Item>
-                <Descriptions.Item label="制造商型号"> 380T GDi 8AT LUX</Descriptions.Item>
-                <Descriptions.Item label="优惠"> 无 </Descriptions.Item>
-            </Descriptions> */}
-        </div>
+        <Image.PreviewGroup
+        >
+            <div className={styles.imageWrapper}>
+                <Image
+                    width={400}
+                    src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
+                <Image
+                    width={400}
+                    src="https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg"
+                />
+            </div>
+
+        </Image.PreviewGroup>
     )
 }
 
