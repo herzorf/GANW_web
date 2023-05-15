@@ -3,6 +3,9 @@ import styles from "./index.module.scss"
 import { inforMap } from "../../inforMap"
 import http from "@/http"
 import { useLayoutEffect, useState } from "react"
+import { HashLink } from 'react-router-hash-link';
+import { useLocation } from "react-router-dom"
+
 interface PropsType {
     proId: string
 }
@@ -108,28 +111,57 @@ const ProductParameter = ({ proId }: PropsType) => {
         "外部防盗配置": theftConfiguration,
         "操控配置": handlingConfiguration
     }
+    console.log(useLocation().pathname)
+    const getLinks = (map: object) => {
+        return Object.keys(map).map((key, index) => {
+            return (
+                {
+                    key: `${key}`,
+                    // href: `/GANW/dist/#${useLocation().pathname}#${key}`,
+                    href: `#${key}`,
+                    title: <HashLink to={`#${key}`}>{key}</HashLink>
+                }
+            )
+        })
+    }
+    getLinks(map)
     return (
         <div className={styles.wrapper}>
-            {Object.keys(map).map((key, index) => {
-                const item = map[key as keyof typeof map]
-                if (item) {
-                    return (
-                        <Descriptions size="small" column={1} bordered title={key}>
-                            {Object.keys(item).map((key, index) => {
-                                const itemName = inforMap[key as keyof typeof inforMap]
-                                if (item[key] !== null && itemName !== undefined && item[key].length > 0) {
-                                    return (
-                                        <Descriptions.Item key={key} label={itemName}>{randerInfo(item[key])}</Descriptions.Item>
-                                    )
-                                }
-                            })
-                            }
-                        </Descriptions>
-                    )
-                }
-            })
-            }
+            <Row>
+                <Col span={18}>
+                    {Object.keys(map).map((key, index) => {
+                        const item = map[key as keyof typeof map]
+                        if (item) {
+                            return (
+                                <div id={key}>
+                                    <Descriptions size="small" column={1} bordered title={key}>
+                                        {Object.keys(item).map((key, index) => {
+                                            const itemName = inforMap[key as keyof typeof inforMap]
+                                            if (item[key] !== null && itemName !== undefined && item[key].length > 0) {
+                                                return (
+                                                    <Descriptions.Item key={key} label={itemName}>{randerInfo(item[key])}</Descriptions.Item>
+                                                )
+                                            }
+                                        })
+                                        }
+                                    </Descriptions>
+                                </div>
+
+                            )
+                        }
+                    })
+                    }
+                </Col>
+                <Col span={6} >
+                    <Anchor
+                        style={{ marginLeft: "50px" }}
+                        items={
+                            getLinks(map)}
+                    />
+                </Col>
+            </Row>
         </div>
+
     )
 }
 export default ProductParameter
