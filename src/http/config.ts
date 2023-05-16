@@ -3,6 +3,6 @@
 
 // const baseURL = "http://10.15.212.254:8080"
 
-const baseURL = "http://192.168.0.107:8080"
+const baseURL = "http://192.168.12.54:8080"
 
 export { baseURL }

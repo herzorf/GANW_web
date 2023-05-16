@@ -13,7 +13,7 @@ interface PropsType {
 const ProductParameter = ({ proId }: PropsType) => {
     const randerInfo = (value: string): string => {
         value = value.toString()
-        value = value.replace(/#0#/g, "无")
+        value = value.replace(/#0#/g, "--")
         value = value.replace(/#1#/g, "标配")
         value = value.replace(/#2#/g, "选配")
         return value
@@ -117,8 +117,8 @@ const ProductParameter = ({ proId }: PropsType) => {
             return (
                 {
                     key: `${key}`,
-                    // href: `/GANW/dist/#${useLocation().pathname}#${key}`,
-                    href: `#${key}`,
+                    href: `/GANW/dist/#${useLocation().pathname}#${key}`,
+                    // href: `#${key}`,
                     title: <HashLink to={`#${key}`}>{key}</HashLink>
                 }
             )
@@ -128,6 +128,14 @@ const ProductParameter = ({ proId }: PropsType) => {
     return (
         <div className={styles.wrapper}>
             <Row>
+                <Col span={6} >
+                    <Anchor
+                        style={{}}
+                        items={
+                            getLinks(map)}
+                    />
+                </Col>
+
                 <Col span={18}>
                     {Object.keys(map).map((key, index) => {
                         const item = map[key as keyof typeof map]
@@ -152,13 +160,7 @@ const ProductParameter = ({ proId }: PropsType) => {
                     })
                     }
                 </Col>
-                <Col span={6} >
-                    <Anchor
-                        style={{ marginLeft: "50px" }}
-                        items={
-                            getLinks(map)}
-                    />
-                </Col>
+
             </Row>
         </div>
 

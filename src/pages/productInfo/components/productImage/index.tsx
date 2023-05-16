@@ -19,7 +19,7 @@ const ProductIntroduce = ({ proId }: PropsType) => {
         >
             <div className={styles.imageWrapper}>
                 {productImage && productImage.map((item: any) => {
-                    return <Image width={700} style={{ marginBottom: "36px" }} src={item.proImg} />
+                    return <Image width={1000} style={{ marginBottom: "36px" }} src={item.proImg} />
                 })}
 
             </div>
